@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Shop - Bean & Brew</title>
+</head>
+
+<body class="page-bg">
+    <header>
+        <div class="logo">
+            <h2>Bean & Brew</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h1>Our Available Roasts</h1>
+        <div class="card-container">
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=300" alt="Dark Roast">
+                <h3>Midnight Blend</h3>
+                <p>Rich, dark, and bold. $18.00</p>
+                <a href="#" class="btn add-to-cart-btn" data-name="Midnight Blend" data-price="18.00">Add to Cart</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1580915411954-282cb1b0d780?w=300" alt="Light Roast">
+                <h3>Sunrise Light</h3>
+                <p>Floral and bright. $16.00</p>
+                <a href="#" class="btn add-to-cart-btn" data-name="Sunrise Light" data-price="16.00">Add to Cart</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=300" alt="Espresso Supreme">
+                <h3>Espresso Supreme</h3>
+                <p>Strong and intense. $20.00</p>
+                <a href="#" class="btn add-to-cart-btn" data-name="Espresso Supreme" data-price="20.00">Add to Cart</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300" alt="Vanilla Latte Roast">
+                <h3>Vanilla Latte Roast</h3>
+                <p>Smooth vanilla notes. $19.00</p>
+                <a href="#" class="btn add-to-cart-btn" data-name="Vanilla Latte Roast" data-price="19.00">Add to
+                    Cart</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1610632380989-680fe40816c6?w=300" alt="Hazelnut Heaven">
+                <h3>Hazelnut Heaven</h3>
+                <p>Simply nutty. $17.50</p>
+                <a href="#" class="btn add-to-cart-btn" data-name="Hazelnut Heaven" data-price="17.50">Add to Cart</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=300" alt="Decaf Delight">
+                <h3>Decaf Delight</h3>
+                <p>All flavor, no buzz. $16.50</p>
+                <a href="#" class="btn add-to-cart-btn" data-name="Decaf Delight" data-price="16.50">Add to Cart</a>
+            </div>
+        </div>
+
+        <div id="cart-icon">
+            &#128722; <span id="cart-count-badge">0</span>
+        </div>
+
+        <div id="cart-container">
+            <h3>Shopping Cart <span id="close-cart" style="float:right; cursor:pointer;">&times;</span></h3>
+            <ul id="cart-items">
+                <!-- Items will be added here -->
+            </ul>
+            <div id="cart-total">Total: $<span id="cart-total-price">0.00</span></div>
+        </div>
+
+        <script src="script.js"></script>
+    </section>
+</body>
+
+</html>

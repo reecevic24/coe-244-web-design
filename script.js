@@ -88,10 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartIcon = document.getElementById('cart-icon');
     const cartContainer = document.getElementById('cart-container');
     const closeCart = document.getElementById('close-cart');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const modal = document.getElementById('checkout-modal');
+    const closeModal = document.querySelector('.close-modal');
+    const confirmPaymentBtn = document.getElementById('confirm-payment');
+    const mpesaInput = document.getElementById('mpesa-number');
+    const paymentStatus = document.getElementById('payment-status');
 
     cartIcon.addEventListener('click', () => {
         if (cartContainer.style.display === 'none' || cartContainer.style.display === '') {
             cartContainer.style.display = 'block';
+            updateCheckoutButton();
         } else {
             cartContainer.style.display = 'none';
         }
@@ -100,4 +107,70 @@ document.addEventListener('DOMContentLoaded', () => {
     closeCart.addEventListener('click', () => {
         cartContainer.style.display = 'none';
     });
+
+    function updateCheckoutButton() {
+        if (cart.length > 0) {
+            checkoutBtn.style.display = 'block';
+        } else {
+            checkoutBtn.style.display = 'none';
+        }
+    }
+
+    // Modal Logic
+    checkoutBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        const total = document.getElementById('cart-total-price').textContent;
+        document.getElementById('checkout-total-display').textContent = `Total: $${total}`;
+        paymentStatus.textContent = '';
+        mpesaInput.value = '';
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    confirmPaymentBtn.addEventListener('click', () => {
+        const phone = mpesaInput.value;
+        if (phone.trim() === '') {
+            paymentStatus.textContent = 'Please enter a valid phone number.';
+            paymentStatus.style.color = 'red';
+            return;
+        }
+
+        // Simulate Payment Processing
+        paymentStatus.textContent = 'Processing payment... sent STK push to ' + phone;
+        paymentStatus.style.color = 'orange';
+        confirmPaymentBtn.disabled = true;
+        confirmPaymentBtn.textContent = 'Processing...';
+
+        setTimeout(() => {
+            paymentStatus.textContent = 'Payment Successful! Confirmed.';
+            paymentStatus.style.color = 'green';
+            confirmPaymentBtn.textContent = 'Paid';
+            
+            setTimeout(() => {
+                cart = [];
+                updateCartDisplay();
+                updateCartIcon();
+                cartContainer.style.display = 'none';
+                modal.style.display = 'none';
+                confirmPaymentBtn.disabled = false;
+                confirmPaymentBtn.textContent = 'Pay Now';
+                alert('Thank you for your purchase!');
+            }, 2000);
+        }, 2000);
+    });
+
+    // Hook into updateCartDisplay to show/hide checkout button dynamically when items are added/removed
+    const originalUpdateCartDisplay = updateCartDisplay; 
+    updateCartDisplay = function() {
+        originalUpdateCartDisplay();
+        updateCheckoutButton();
+    };
 });

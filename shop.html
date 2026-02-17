@@ -18,6 +18,7 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" id="login-btn">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -73,21 +74,39 @@
             <ul id="cart-items">
                 <!-- Items will be added here -->
             </ul>
-        <div id="cart-total">Total: $<span id="cart-total-price">0.00</span></div>
-            <button id="checkout-btn" class="btn checkout-btn" style="display: none; margin-top: 15px;">Checkout with M-Pesa</button>
+            <div id="cart-total">Total: $<span id="cart-total-price">0.00</span></div>
+            <button id="checkout-btn" class="btn checkout-btn" style="display: none; margin-top: 15px;">Checkout with
+                M-Pesa</button>
         </div>
 
         <!-- Checkout Modal -->
         <div id="checkout-modal" class="modal">
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
-                <h2 style="color: #4CAF50;">M-Pesa Checkout</h2>
+                <h2 style="color: #4CAF50;">Checkout</h2>
                 <div id="checkout-total-display">Total: $0.00</div>
-                <p>Enter your M-Pesa number to pay.</p>
-                
-                <label for="mpesa-number" class="modal-label">Phone Number</label>
-                <input type="text" id="mpesa-number" class="modal-input" placeholder="07XX XXX XXX">
-                
+
+                <label for="delivery-location" class="modal-label">Delivery Location</label>
+                <input type="text" id="delivery-location" class="modal-input" placeholder="Enter delivery address">
+
+                <label class="modal-label">Payment Method</label>
+                <div class="payment-options-container">
+                    <div class="payment-option">
+                        <input type="radio" id="pay-now" name="payment-method" value="pay-now" checked>
+                        <label for="pay-now">Mpesa (Online)</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="pay-cod" name="payment-method" value="cod">
+                        <label for="pay-cod">Cash (On Delivery)</label>
+                    </div>
+                </div>
+
+                <div id="mpesa-section">
+                    <p>Enter your M-Pesa number to pay.</p>
+                    <label for="mpesa-number" class="modal-label">Phone Number</label>
+                    <input type="text" id="mpesa-number" class="modal-input" placeholder="07XX XXX XXX">
+                </div>
+
                 <button id="confirm-payment" class="btn checkout-btn">Pay Now</button>
                 <p id="payment-status" style="margin-top: 10px; font-weight: bold;"></p>
             </div>
